@@ -20,12 +20,12 @@ import uk.gov.hmrc.renderer.TemplateRenderer
 import uk.gov.hmrc.play.config.{AppName, RunMode, ServicesConfig}
 import uk.gov.hmrc.nisp.config.wiring.{NispAuditConnector, WSHttp}
 import uk.gov.hmrc.play.audit.http.HttpAuditing
-import uk.gov.hmrc.play.http.HeaderCarrier
 import uk.gov.hmrc.play.http.logging.MdcLoggingExecutionContext._
 import uk.gov.hmrc.play.http.ws.WSHttp
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
+import uk.gov.hmrc.http.HeaderCarrier
 
 trait LocalTemplateRenderer extends TemplateRenderer with ServicesConfig {
   override lazy val templateServiceBaseUrl = baseUrl("frontend-template-provider")

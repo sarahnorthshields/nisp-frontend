@@ -26,12 +26,12 @@ import uk.gov.hmrc.nisp.models.NationalInsuranceRecord
 import uk.gov.hmrc.nisp.models.enums.APIType
 import uk.gov.hmrc.nisp.services.MetricsService
 import uk.gov.hmrc.nisp.utils.JsonDepersonaliser
-import uk.gov.hmrc.play.http.{HeaderCarrier, HttpGet, HttpResponse}
 import uk.gov.hmrc.play.test.UnitSpec
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
+import uk.gov.hmrc.http.{ HeaderCarrier, HttpGet, HttpResponse }
 
 class BackendConnectorSpec extends UnitSpec with MockitoSugar with ScalaFutures {
 

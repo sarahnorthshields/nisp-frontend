@@ -21,10 +21,10 @@ import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
 import play.api.http.Status
 import play.api.libs.json.Json
-import uk.gov.hmrc.play.http.{HttpGet, HttpResponse}
 
 import scala.concurrent.Future
 import scala.io.Source
+import uk.gov.hmrc.http.{ HttpGet, HttpResponse }
 
 object MockIdentityVerificationHttp extends MockitoSugar {
   val mockHttp = mock[HttpGet]

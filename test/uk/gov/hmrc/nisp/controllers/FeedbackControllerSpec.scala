@@ -30,11 +30,11 @@ import uk.gov.hmrc.nisp.helpers._
 import uk.gov.hmrc.nisp.services.CitizenDetailsService
 import uk.gov.hmrc.nisp.utils.MockTemplateRenderer
 import uk.gov.hmrc.play.http.ws.WSHttp
-import uk.gov.hmrc.play.http.{HttpPost, HttpResponse}
 import uk.gov.hmrc.play.partials.{CachedStaticHtmlPartialRetriever, FormPartialRetriever}
 import uk.gov.hmrc.renderer.TemplateRenderer
 
 import scala.concurrent.Future
+import uk.gov.hmrc.http.{ HttpPost, HttpResponse }
 
 class FeedbackControllerSpec extends PlaySpec with MockitoSugar with OneAppPerSuite {
   val fakeRequest = FakeRequest("GET", "/")

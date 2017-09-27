@@ -23,6 +23,7 @@ import uk.gov.hmrc.play.http._
 
 import scala.concurrent.Future
 import scala.io.Source
+import uk.gov.hmrc.http.{ HeaderCarrier, HttpDelete, HttpGet, HttpPut, UserId }
 
 object MockSessionCache extends SessionCache{
   val cachedNinoAndUsername = TestAccountBuilder.cachedNino

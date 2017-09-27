@@ -27,9 +27,9 @@ import uk.gov.hmrc.nisp.utils.Constants
 import uk.gov.hmrc.play.frontend.auth._
 import uk.gov.hmrc.play.frontend.auth.connectors.domain.{Accounts, ConfidenceLevel}
 import uk.gov.hmrc.play.http.logging.MdcLoggingExecutionContext._
-import uk.gov.hmrc.play.http.{HeaderCarrier, SessionKeys}
 
 import scala.concurrent.Future
+import uk.gov.hmrc.http.{ HeaderCarrier, SessionKeys }
 
 trait AuthorisedForNisp extends Actions {
   val citizenDetailsService: CitizenDetailsService

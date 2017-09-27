@@ -33,10 +33,11 @@ import uk.gov.hmrc.nisp.services.CitizenDetailsService
 import uk.gov.hmrc.nisp.views.html.feedback_thankyou
 import uk.gov.hmrc.play.frontend.auth.Actions
 import uk.gov.hmrc.play.frontend.controller.UnauthorisedAction
-import uk.gov.hmrc.play.http.{HeaderCarrier, HttpPost, _}
+import uk.gov.hmrc.play.http._
 import uk.gov.hmrc.play.partials.FormPartialRetriever
 
 import scala.concurrent.Future
+import uk.gov.hmrc.http.{ HeaderCarrier, HttpPost, HttpReads, HttpResponse }
 
 object FeedbackController extends FeedbackController with AuthenticationConnectors with PartialRetriever {
 

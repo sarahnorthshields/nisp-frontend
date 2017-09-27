@@ -20,9 +20,9 @@ import org.mockito.ArgumentMatchers
 import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
 import uk.gov.hmrc.domain.Nino
-import uk.gov.hmrc.play.http.{BadRequestException, HttpGet, HttpResponse, Upstream4xxResponse}
 
 import scala.concurrent.Future
+import uk.gov.hmrc.http.{ BadRequestException, HttpGet, HttpResponse, Upstream4xxResponse }
 
 object MockNispHttp extends MockitoSugar {
   val mockHttp = mock[HttpGet]

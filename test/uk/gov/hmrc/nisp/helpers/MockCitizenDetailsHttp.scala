@@ -24,6 +24,7 @@ import uk.gov.hmrc.play.http._
 import uk.gov.hmrc.play.test.UnitSpec
 
 import scala.concurrent.Future
+import uk.gov.hmrc.http.{ BadRequestException, HttpGet, HttpResponse, NotFoundException, Upstream5xxResponse }
 
 object MockCitizenDetailsHttp extends UnitSpec with MockitoSugar {
   val mockHttp = mock[HttpGet]
