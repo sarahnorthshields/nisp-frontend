@@ -9,22 +9,16 @@ object FrontendBuild extends Build with MicroService {
 
 private object AppDependencies {
 
-  private val playHealthVersion = "2.0.0"
-  private val frontendBootstrapVersion = "7.19.0"
-  private val playUiVersion = "7.4.0"
-  private val playAuthorisedFrontendVersion = "6.3.0"
-  private val playLanguageVersion = "3.3.0"
-  private val httpCachingClientVersion = "6.2.0"
-  private val cspClientVersion = "1.0.0"
+  private val frontendBootstrapVersion = "8.6.0"
+  private val playLanguageVersion = "3.4.0"
+  private val httpCachingClientVersion = "7.0.0"
+  private val cspClientVersion = "2.1.0"
   private val localTemplateRendererVersion = "1.0.0"
 
   val compile = Seq(
     "uk.gov.hmrc" %% "frontend-bootstrap" % frontendBootstrapVersion,
-    "uk.gov.hmrc" %% "play-authorised-frontend" % playAuthorisedFrontendVersion,
     "uk.gov.hmrc" %% "http-caching-client" % httpCachingClientVersion,
     "uk.gov.hmrc" %% "play-language" % playLanguageVersion,
-    "uk.gov.hmrc" %% "play-health" % playHealthVersion,
-    "uk.gov.hmrc" %% "play-ui" % playUiVersion,
     "uk.gov.hmrc" %% "tax-year" % "0.3.0",
     "uk.gov.hmrc" %% "csp-client" % cspClientVersion,
     "uk.gov.hmrc" %% "play-conditional-form-mapping" % "0.2.0",

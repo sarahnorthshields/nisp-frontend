@@ -21,9 +21,9 @@ import uk.gov.hmrc.http.cache.client.{CacheMap, SessionCache}
 import uk.gov.hmrc.nisp.models.SPSummaryModel
 import uk.gov.hmrc.play.http._
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 import scala.io.Source
-import uk.gov.hmrc.http.{ HeaderCarrier, HttpDelete, HttpGet, HttpPut, UserId }
+import uk.gov.hmrc.http.{HeaderCarrier, HttpDelete, HttpGet, HttpPut, UserId}
 
 object MockSessionCache extends SessionCache{
   val cachedNinoAndUsername = TestAccountBuilder.cachedNino
@@ -46,8 +46,8 @@ object MockSessionCache extends SessionCache{
       case _ => None
     }
 
-  override def fetchAndGetEntry[T](key: String)(implicit hc: HeaderCarrier, rds: Reads[T]): Future[Option[T]] =
+  override def fetchAndGetEntry[T](key: String)(implicit hc: HeaderCarrier, rds: Reads[T], ec: ExecutionContext): Future[Option[T]] =
     Future.successful(hc.userId.filter(_ == cachedUserId).flatMap(p => loadObjectBasedOnKey(key)))
 
-  override def cache[A](formId: String, body: A)(implicit wts: Writes[A], hc: HeaderCarrier): Future[CacheMap] = Future.successful(CacheMap("", Map()))
+  override def cache[A](formId: String, body: A)(implicit wts: Writes[A], hc: HeaderCarrier, ec: ExecutionContext): Future[CacheMap] = Future.successful(CacheMap("", Map()))
 }

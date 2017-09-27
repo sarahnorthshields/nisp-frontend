@@ -54,7 +54,7 @@ object MockCitizenDetailsHttp extends UnitSpec with MockitoSugar {
     TestAccountBuilder.excludedMwrre
   )
   def createMockedURL(nino: Nino, response: Future[HttpResponse]): Unit =
-    when(mockHttp.GET[HttpResponse](ArgumentMatchers.endsWith(s"citizen-details/$nino/designatory-details"))(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(response)
+    when(mockHttp.GET[HttpResponse](ArgumentMatchers.endsWith(s"citizen-details/$nino/designatory-details"))(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(response)
 
   private def setupCitizenDetailsMocking(nino: Nino) =
     createMockedURL(nino, TestAccountBuilder.jsonResponse(nino, "citizen-details"))

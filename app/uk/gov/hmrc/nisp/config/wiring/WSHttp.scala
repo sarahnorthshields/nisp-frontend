@@ -16,11 +16,16 @@
 
 package uk.gov.hmrc.nisp.config.wiring
 
+import uk.gov.hmrc.http._
 import uk.gov.hmrc.play.audit.http.HttpAuditing
 import uk.gov.hmrc.play.config.{AppName, RunMode}
-import uk.gov.hmrc.play.http.ws.{WSGet, WSPut, WSPost, WSDelete}
+import uk.gov.hmrc.play.http.ws.{WSDelete, WSGet, WSPost, WSPut}
 
-object WSHttp extends WSGet with WSPut with WSPost with WSDelete with AppName with HttpAuditing with RunMode {
+object WSHttp extends WSGet with HttpGet
+  with WSPut with HttpPut
+  with WSPost with HttpPost
+  with WSDelete with HttpDelete
+  with AppName with HttpAuditing with RunMode {
   override val auditConnector = NispAuditConnector
   override val hooks = Seq(AuditingHook)
 }

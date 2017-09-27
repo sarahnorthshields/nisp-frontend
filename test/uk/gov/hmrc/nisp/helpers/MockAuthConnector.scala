@@ -22,13 +22,13 @@ import uk.gov.hmrc.play.frontend.auth.connectors.domain.ConfidenceLevel.L500
 import uk.gov.hmrc.play.frontend.auth.connectors.domain.{Accounts, Authority, CredentialStrength, PayeAccount}
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
-import uk.gov.hmrc.http.{ HeaderCarrier, HttpGet, UserId }
+import scala.concurrent.{ExecutionContext, Future}
+import uk.gov.hmrc.http.{CoreGet, HeaderCarrier, HttpGet, UserId}
 
 object MockAuthConnector extends AuthConnector {
   override val serviceUrl: String = ""
 
-  override def http: HttpGet = ???
+  override def http: CoreGet = ???
 
   val mockUserId = userID("mockuser")
 
@@ -67,6 +67,6 @@ object MockAuthConnector extends AuthConnector {
   private def testCredentialStrength(nino: Nino): CredentialStrength =
     if (nino == TestAccountBuilder.weakNino) CredentialStrength.Weak else CredentialStrength.Strong
 
-  override def currentAuthority(implicit hc: HeaderCarrier): Future[Option[Authority]] =
+  override def currentAuthority(implicit hc: HeaderCarrier, ec: ExecutionContext): Future[Option[Authority]] =
     Future(payeAuthority(hc.userId.getOrElse(mockUserId).value, usernameToNino(hc.userId.getOrElse(mockUserId))))
 }

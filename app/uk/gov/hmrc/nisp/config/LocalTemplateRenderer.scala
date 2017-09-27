@@ -25,7 +25,7 @@ import uk.gov.hmrc.play.http.ws.WSHttp
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
-import uk.gov.hmrc.http.HeaderCarrier
+import uk.gov.hmrc.http._
 
 trait LocalTemplateRenderer extends TemplateRenderer with ServicesConfig {
   override lazy val templateServiceBaseUrl = baseUrl("frontend-template-provider")
@@ -42,7 +42,7 @@ object LocalTemplateRenderer extends LocalTemplateRenderer {
   override val wsHttp = WsAllMethods
 }
 
-trait WsAllMethods extends WSHttp with HttpAuditing with AppName with RunMode
+trait WsAllMethods extends WSHttp with HttpGet with HttpPost with HttpPut with HttpDelete with HttpPatch with HttpAuditing with AppName with RunMode
 
 object WsAllMethods extends WsAllMethods {
   override val auditConnector = NispAuditConnector

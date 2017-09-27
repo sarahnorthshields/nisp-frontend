@@ -37,7 +37,8 @@ import uk.gov.hmrc.play.http._
 import uk.gov.hmrc.play.partials.FormPartialRetriever
 
 import scala.concurrent.Future
-import uk.gov.hmrc.http.{ HeaderCarrier, HttpPost, HttpReads, HttpResponse }
+import uk.gov.hmrc.http._
+import uk.gov.hmrc.play.http.logging.MdcLoggingExecutionContext
 
 object FeedbackController extends FeedbackController with AuthenticationConnectors with PartialRetriever {
 
@@ -56,7 +57,7 @@ object FeedbackController extends FeedbackController with AuthenticationConnecto
 trait FeedbackController extends NispFrontendController with Actions with AuthorisedForNisp {
   implicit val formPartialRetriever: FormPartialRetriever
 
-  def httpPost: HttpPost
+  def httpPost: CorePost
 
   def contactFormReferer(implicit request: Request[AnyContent]): String
 
@@ -87,7 +88,8 @@ trait FeedbackController extends NispFrontendController with Actions with Author
   def submit: Action[AnyContent] = UnauthorisedAction.async {
     implicit request =>
       request.body.asFormUrlEncoded.map { formData =>
-        httpPost.POSTForm[HttpResponse](feedbackHmrcSubmitPartialUrl, formData)(rds = PartialsFormReads.readPartialsForm, hc = partialsReadyHeaderCarrier).map {
+        httpPost.POSTForm[HttpResponse](feedbackHmrcSubmitPartialUrl, formData)(rds = PartialsFormReads.readPartialsForm,
+          hc = partialsReadyHeaderCarrier, MdcLoggingExecutionContext.fromLoggingDetails(partialsReadyHeaderCarrier)).map {
           resp =>
             resp.status match {
               case HttpStatus.OK => Redirect(routes.FeedbackController.showThankYou()).withSession(request.session + (TICKET_ID -> resp.body))
