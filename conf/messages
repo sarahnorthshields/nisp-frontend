@@ -64,6 +64,9 @@ nisp.main.puttingOff = Putting off claiming
 nisp.main.puttingOff.line1 = You can put off claiming your State Pension from {0}. Doing this may mean you get extra State Pension when you do come to claim it. The extra amount, along with your State Pension, forms part of your taxable income.
 nisp.main.puttingOff.linkTitle = More on putting off claiming (opens in new tab)
 
+nisp.main.showdate = Proposed change to your State Pension age
+nisp.main.showdate.line = You&rsquo;ll reach State Pension age on {0}. Under government proposals this may increase by up to a year.
+
 nisp.main.showyourrecord = View your National Insurance record
 nisp.main.showyourrecordUK = View your UK National Insurance record
 
@@ -108,7 +111,6 @@ nisp.main.context.fillgaps.para1.futurePersonalMax =  You have shortfalls in you
 nisp.main.context.fillgaps.chart.maxamount = The most you can increase your forecast to is
 
 nisp.main.context.fillgaps.futureproof.para = You have years on your National Insurance record where you did not contribute enough. Filling years can improve your forecast.
-
 #**********************
 # Exclusion messages
 #**********************

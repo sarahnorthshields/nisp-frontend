@@ -16,6 +16,9 @@
 
 package uk.gov.hmrc.nisp.utils
 
+import org.joda.time.LocalDate
+import uk.gov.hmrc.nisp.models.NpsDate
+
 object Constants {
 
   // scalastyle:off magic.number
@@ -51,4 +54,8 @@ object Constants {
   val niRecordMinAge = 16
 
   var yearStringLength = 4
+
+  val showDateFrom = new LocalDate(1970, 4, 6)
+  val showDateTo = new LocalDate(1978, 4, 5)
+
 }

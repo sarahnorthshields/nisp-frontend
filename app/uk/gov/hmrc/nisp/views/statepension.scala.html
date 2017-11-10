@@ -23,6 +23,7 @@
 @import uk.gov.hmrc.play.language.LanguageUtils.Dates
 @import play.api.Application
 @import uk.gov.hmrc.nisp.controllers.routes
+@import org.joda.time.LocalDate
 
 @(
     statePension: StatePension,
@@ -35,6 +36,8 @@
     hidePersonalMaxYears: Boolean,
     customerAge: Option[Int],
     isAbroad: Boolean,
+    dateOfBirth:Option[LocalDate],
+     statePensionDate:LocalDate,
     yearsToContributeUntilPensionAge: Int
 )(implicit request: Request[_], user: NispUser, partialRetriever: CachedStaticHtmlPartialRetriever, messages: Messages,
 application: Application, formPartialRetriever: uk.gov.hmrc.play.partials.FormPartialRetriever, templateRenderer: uk.gov.hmrc.renderer.TemplateRenderer)
@@ -172,8 +175,12 @@ application: Application, formPartialRetriever: uk.gov.hmrc.play.partials.FormPa
             @includes.deferral(Dates.formatDate(statePension.pensionDate))
         }
     }
+te
+    @if(dateOfBirth.get.isAfter(Constants.showDateFrom) && dateOfBirth.get.isBefore(Constants.showDateTo )){
+            @includes.showStatePensionDate(Dates.formatDate(statePension.pensionDate))
+    }
 
-    @if(isPertaxUrl) {
+@if(isPertaxUrl) {
         <div class="panel-indent">@Html(Messages("nisp.landing.estimateprovided"))</div>
     }
   }

@@ -171,6 +171,8 @@ trait StatePensionController extends NispFrontendController with AuthorisedForNi
                   hidePersonalMaxYears = applicationConfig.futureProofPersonalMax,
                   user.dateOfBirth.map(calculateAge(_, now().toLocalDate)),
                   user.livesAbroad,
+                  user.dateOfBirth,
+                  statePension.pensionDate,
                   yearsToContributeUntilPensionAge
                 )).withSession(storeUserInfoInSession(user, statePension.contractedOut))
               }
